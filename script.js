@@ -44,14 +44,12 @@ clipboardElement.addEventListener('click', () => {
 function generatePassword(length, lower, number, upper, symbol) {
     let password = ''
 
-    //filter unchecked types
     const typesCount = lower + upper + number + symbol
 
     if (typesCount === 0) return ''
 
     const typesArray = [{ lower }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0])
 
-    //loop over length, call generator function for each type
     for (let i = 0; i < length; i += typesCount) {
         typesArray.forEach(type => {
             const funcName = Object.keys(type)[0]
@@ -62,7 +60,6 @@ function generatePassword(length, lower, number, upper, symbol) {
     return password.slice(0, length)
 }
 
-//Generator functions
 function getRandomLower() { //97 - 122
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
 }
